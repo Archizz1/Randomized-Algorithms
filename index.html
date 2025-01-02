@@ -23,15 +23,13 @@
             align-self: flex-start;
             margin-left: 20px;
         }
-        p {
+        p, ul {
             align-self: flex-start;
             margin-left: 20px;
             margin-right: 20px;
-            text-align: justify;
         }
         ul {
-            align-self: flex-start;
-            margin-left: 20px;
+            list-style: disc;
         }
         li {
             margin-bottom: 5px;
@@ -40,6 +38,10 @@
 </head>
 <body>
     <h1>Randomized Algorithms</h1>
+
+    <h2>Introduction</h2>
+    <p>A randomized algorithm is an algorithm that uses random numbers or random choices as part of its logic to solve a computational problem. The randomness introduced can affect the behaviour, runtime, or output of the algorithm, depending on the specific application. Randomized algorithms where randomness is induced in the output of the algorithm are often used for primality checking. Such a class of algorithms having randomness in the output are called Monte Carlo Algorithms.</p>
+    <p>Prime numbers are a fascinating and essential part of mathematics. There are several mysteries in mathematics involving prime numbers. At the same time, prime numbers have varied practical applications in mathematics and computer science. Thus, given a number, it is essential to know whether it is prime or not. Now, factoring large numbers is not an easy task. There is no known algorithm that can factorize all integers in polynomial time. (Although the existence or non-existence of such an algorithm has not yet been proved.) This is where randomized algorithms come in. Randomized algorithms are useful in primality checks because they offer efficiency and probabilistic guarantees for large numbers. They often have polynomial runtime. One such algorithm is the Solovay-Strassen Primality Test. Before we go into the algorithm, I would like to give some short notes on prerequisites to understand the algorithm.</p>
 
     <h2>Table of Contents</h2>
     <ul>
@@ -55,10 +57,21 @@
 
     <h2 id="modular-arithmetic">Modular Arithmetic</h2>
     <p>We use the notation \( a \equiv b \pmod{n} \) to denote the fact that \( n \mid (a - b) \). So \( b \) essentially gives us a remainder.</p>
+    <p>Some properties of modular arithmetic:</p>
+    <ul>
+        <li>\( a \equiv a \pmod{n} \)</li>
+        <li>If \( a \equiv b \pmod{n} \), then \( b \equiv a \pmod{n} \)</li>
+        <li>If \( a \equiv b \pmod{n} \) and \( b \equiv c \pmod{n} \), then \( a \equiv c \pmod{n} \)</li>
+        <li>If \( a \equiv b \pmod{n} \) and \( c \equiv d \pmod{n} \), then \( a + c \equiv b + d \pmod{n} \) and \( ac \equiv bd \pmod{n} \)</li>
+        <li>If \( a \equiv b \pmod{n} \), then \( a + c \equiv b + c \pmod{n} \) and \( ac \equiv bc \pmod{n} \)</li>
+        <li>If \( a \equiv b \pmod{n} \), then \( a^k \equiv b^k \pmod{n} \) for any positive integer \( k \)</li>
+        <li>If \( ca \equiv cb \pmod{n} \), then \( a \equiv b \pmod{n} \) where \( d = \gcd(c, n) \)</li>
+    </ul>
+    <p>One can easily verify these properties using basic concepts of divisibility of integers.</p>
 
     <h2 id="eulers-totient">Euler's Totient Function</h2>
     <p>The Euler's totient function \( \phi(n) \) denotes the cardinality of the set \( \{x \mid 1 \leq x < n, x \in \mathbb{N}, \gcd(x, n) = 1\} \).</p>
-    <p>Since for a prime number p, all number from \( 1 \) to \( p-1 \) are co-prime to p. Thus \( \phi(p) = p-1 \) </p>    
+    <p>Since for a prime number \( p \), all numbers from \( 1 \) to \( p-1 \) are co-prime to \( p \). Thus \( \phi(p) = p-1 \).</p>    
 
     <h2 id="groups">Groups</h2>
     <h2 id="generators">Generators</h2>
