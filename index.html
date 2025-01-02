@@ -71,7 +71,8 @@
 
     <h2 id="eulers-totient">Euler's Totient Function</h2>
     <p>The Euler's totient function \( \phi(n) \) denotes the cardinality of the set \( \{x \mid 1 \leq x < n, x \in \mathbb{N}, \gcd(x, n) = 1\} \).</p>
-    <p>Since for a prime number \( p \), all numbers from \( 1 \) to \( p-1 \) are co-prime to \( p \). Thus \( \phi(p) = p-1 \).</p>    
+    <p>Since for a prime number \( p \), all numbers from \( 1 \) to \( p-1 \) are co-prime to \( p \). Thus \( \phi(p) = p-1 \). For \( p^k \), where \( p \) is a prime and \( k \) is a positive integer, \( p^k \) is not co-prime to \( 1, p, 2p, \dots, p^{k}-p \), which are \( p^{k-1} \) numbers. Therefore, \( \phi(p^k) = p^k - p^{k-1} \).</p>
+    <p><strong>Euler's Theorem:</strong> If \( \gcd(a, n) = 1 \), then \( a^{\phi(n)} \equiv 1 \pmod{n} \).</p>
 
     <h2 id="groups">Groups</h2>
     <h2 id="generators">Generators</h2>
