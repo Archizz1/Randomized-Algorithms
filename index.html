@@ -81,6 +81,8 @@
     <p>A unit \( g \in \mathbb{Z}_n^* \) is called a generator or primitive root of \( \mathbb{Z}_n^* \) if for every \( a \in \mathbb{Z}_n^* \), we have \( g^k = a \) for some integer \( k \). In other words, if we start with \( g \) and keep multiplying by \( g \), eventually we see every element.<br> The order of a unit \( a \in \mathbb{Z}_n^* \) is defined as the smallest integer \(k\) for which \( a^k \equiv 1 \pmod{n} \).
     <p><strong>Theorem:</strong> The order of a generator \( g \in \mathbb{Z}_n^* \) modulo n is  \(\phi(n)\).</p>
     <p><strong>Proof:</strong>There are \(\phi(n)\) elements in \(\mathbb{Z}_n^* \). We will show that \( g^1,\dots, g^{\phi(n)-1}\) are incongruent modulo n. If otherwise, \(\exists\) \(k \in \mathbb{Z}_n^*\) that is incongruent to all of \(g^1,\dots, g^{\phi(n)-1}\). Since g is a generator \(\exists\) \( r\) such that \(g^r \equiv k \pmod{n}\).<br>\(r = q\phi(n)+m\) where \(m \in \{1,\dots, {\phi(n)-1}\}\)<br>By <strong>Euler's Theorem</strong> we have that \(g^{\phi(n)} \equiv 1 \pmod{n}\). So \(g^{m} \equiv k \pmod{n}\) where \(m \in \{1,\dots, {\phi(n)-1}\}\).<br>This is a contradiction to the fact that \(k\) is incongruent to all of \(g^1,\dots, g^{\phi(n)-1}\). Hence all of \( g^1,\dots, g^{\phi(n)-1}\) are incongruent to each other. So \(\phi(n)\) is the smallest number \(a\) such that \(g^a \equiv 1 \pmod{n}\). Thus order of g is \(\phi(n)\).</p>
+    <p><strong>Theorem:</strong> If order of \( a \in \mathbb{Z}_n^* \) modulo \(n\) is \(k\) and \(a^h \equiv 1 \pmod{n}\) then \(k \mid h\).</p>
+    <p><strong>Proof:</strong> If it is not true then \(h = qk+r\) where \(r \in \{1, 2, \dots, k-1\}\). \(a^{qk+r} \equiv 1 \pmod{n}\). Since \(k\) is the order, we get \(a^r \equiv 1 \pmod{n}\). \(r < k\). This contradicts the fact that \(k\) is the order of \(a\) modulo \(n\) </p>
 
     <h2 id="quadratic-residue">Quadratic Residue</h2>
     <p>Let \( a \in \mathbb{Z}_n \). We say \( a \) is a quadratic residue if there exists some \( x \) such that \( x^2 \equiv a \pmod{n} \). Otherwise \( a \) is a quadratic nonresidue.</p>
@@ -89,7 +91,7 @@
         <li>\(a^{\frac{p-1}{2}} \equiv 1 \pmod{p}\) iff \(a\) is a quadratic residue modulo n.</li>
         <li>\(a^{\frac{p-1}{2}} \equiv -1 \pmod{p}\) iff \(a\) is a quadratic nonresidue modulo n.</li>
     </ul>
-    <p><strong>Proof:</strong></p>
+    <p><strong>Proof:</strong> If \( x^2 \equiv a \pmod{p}\) has a solution \(x_1\) then \(a^{\frac{p-1}{2}} \equiv {x_1}^{2\frac{p-1}{2}} \equiv {x_1}^{p-1} \equiv 1 \pmod{p}\). If \(a^{\frac{p-1}{2}} \equiv 1 \pmod{p}\) we wish to show that \(x^2 \equiv a \pmod{p}\) has a solution. Let \(g\) be a generator of \(\mathbb{Z}_n^*\). Then \(g^k \equiv a \pmod{p}\). We have \(g^{k\frac{p-1}{2}} \equiv a^{\frac{p-1}{2} \equiv 1} \pmod{p}\). So order of g, that is \(\phi(p) = p-1\) divides \(k\frac{p-1}{2}\). Hence, k is even. We get that \(g^{\frac{k}{2}}\) is a solution to \(x^2 \equiv a \pmod{p}\).<br>By <strong>Euler's Theorem</strong> we have that \(a^{p-1} \equiv 1 \pmod{p}\). \((a^{\frac{p-1}{2}}-1)(a^{\frac{p-1}{2}}+1) \equiv 1 \pmod{p}\). Thus, either \(a^{\frac{p-1}{2}} \equiv 1 \pmod{p}\) or \(a^{\frac{p-1}{2}} \equiv -1 \pmod{p}\) is true, but not both. If both are true then we get \(1 \equiv -1 \pmod{p}\), which cannot be true because p is an odd prime. Combining this result with the first part gives us that \(a^{\frac{p-1}{2}} \equiv -1 \pmod{p}\) iff \(a\) is a quadratic non resudue. </p>
 
     <h2 id="legendre-symbol">Legendre Symbol</h2>
     <p>We define the Legendre symbol for odd primes \( p \) and integers \( a \) as :</p>
@@ -110,7 +112,27 @@
         <li>\(\left( \frac{ab}{p} \right) = \left( \frac{a}{p} \right)\left( \frac{b}{p} \right)\)</li>
         <li>\(\left( \frac{1}{p} \right) = 1\) and \(\left( \frac{-1}{p} \right) = (-1)^{\frac{p-1}{2}}\)</li>
     </ul>
+
     <h2 id="jacobi-symbol">Jacobi Symbol</h2>
+    <p>The Jacobi symbol is a generalization of the Legendre symbol for when the denominator is odd but not necessarily prime. It preserves many of the same useful properties.
+    <br>Let \( n \) be an odd positive integer with prime factorization \( n = p_1^{\alpha_1} \cdots p_k^{\alpha_k} \) and let \( a \in \mathbb{Z}_n \) be coprime to \( n \). Define:
+    <br>\[
+    \left( \frac{a}{n} \right) = \left( \frac{a}{p_1} \right)^{\alpha_1} \cdots \left( \frac{a}{p_k} \right)^{\alpha_k}.
+    \]</p>
+    <p>Some properties of the Jacobi Symbol: </p>
+    <ul>
+        <li>If \(a \equiv b \pmod{n}\), then \(\left( \frac{a}{n} \right) = \left( \frac{b}{n} \right)\)</li>
+        <li>\(\left( \frac{ab}{n} \right) = \left( \frac{a}{n} \right)\left( \frac{b}{n} \right)\)</li>
+        <li>\(\left( \frac{-1}{n} \right) = (-1)^{\frac{n-1}{2}}\) and \(\left( \frac{2}{n} \right) = (-1)^{\frac{n^2-1}{8}}\)</li>
+        <li>\(\left( \frac{n}{m} \right) = (-1)^{\frac{m-1}{2}\frac{n-1}{2}}\left( \frac{m}{n} \right)\)</li>
+    </ul>
+    <p><strong>Theorem:</strong> If \(\gcd(a,n) = 1\), then:</p>
+    <ul>
+        <li>If \(x^2 \equiv a \pmod{n}\) has solutions then \(\left( \frac{a}{n} \right) = 1\).</li>
+        <li>If \(\left( \frac{a}{n} \right) = 1\), we cannot conclude that \(x^2 \equiv a \pmod{n}\) has solutions.</li>
+    </ul>
+    <p><strong>Proof:</strong> If \(x^2 \equiv a \pmod{n}\) has solutions then \(n \mid (x^2 - a)\). Thus \(\forall\) primes \(p\) such that \(p \mid n\), \(p \mid (x^2 - a)\). So \(x^2 \equiv a \pmod{p}\) has a solution \(\forall\) primes \(p\) such that \(p \mid n\). Hence, \(\left( \frac{a}{n} \right)\) is basically a product of \(1\)'s. So, \(\left( \frac{a}{n} \right) = 1\).<br>For the second part, \(\left( \frac{3}{35} \right)\) = 1 but \(x^2 \equiv 3 \pmod{35}\) has no solution.</p>
+    <p>The congruence \(\left( \frac{a}{n} \right) \equiv a^{(n-1)/2} \pmod{n}\) is not true \(\forall\) \(a \in \mathbb{Z}_n\). This is what leads us to the <strong>Solovay Strassen Primality Test</strong>.</p>
     <h2 id="algorithm-analysis">The Algorithm and Its Analysis</h2>
 
 </body>
