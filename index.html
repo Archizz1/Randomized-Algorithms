@@ -79,10 +79,37 @@
 
     <h2 id="generators">Generators</h2>
     <p>A unit \( g \in \mathbb{Z}_n^* \) is called a generator or primitive root of \( \mathbb{Z}_n^* \) if for every \( a \in \mathbb{Z}_n^* \), we have \( g^k = a \) for some integer \( k \). In other words, if we start with \( g \) and keep multiplying by \( g \), eventually we see every element.<br> The order of a unit \( a \in \mathbb{Z}_n^* \) is defined as the smallest integer \(k\) for which \( a^k \equiv 1 \pmod{n} \).
-    <p><strong>Theorem:</strong> The order of a generator \( g \in \mathbb{Z}_n^* \) modulo n is  \(\phi(n)\).<br><strong>Proof:</strong>There are \(\phi(n)\) elements in \(\mathbb{Z}_n^* \). We will show that \( g^1,\dots, g^{\phi(n)-1}\) are incongruent modulo n. If otherwise, \(\exists\) \(k \in \mathbb{Z}_n^*\) that is incongruent to all of \(g^1,\dots, g^{\phi(n)-1}\). Since g is a generator \(\exists\) \( r\) such that \(g^r \equiv k \pmod{n}\).<br>\(r = q\phi(n)+m\) where \(m \in \{1,\dots, {\phi(n)-1}\}\)<br>By <strong>Euler's Theorem</strong> we have that \(g^{\phi(n)} \equiv 1 \pmod{n}\). So \(g^{m} \equiv k \pmod{n}\) where \(m \in \{1,\dots, {\phi(n)-1}\}\).<br>This is a contradiction to the fact that \(k\) is incongruent to all of \(g^1,\dots, g^{\phi(n)-1}\). Hence all of \( g^1,\dots, g^{\phi(n)-1}\) are incongruent to each other. So \(\phi(n)\) is the smallest number \(a\) such that \(g^a \equiv 1 \pmod{n}\). Thus order of g is \(\phi(n)\).</p>
+    <p><strong>Theorem:</strong> The order of a generator \( g \in \mathbb{Z}_n^* \) modulo n is  \(\phi(n)\).</p>
+    <p><strong>Proof:</strong>There are \(\phi(n)\) elements in \(\mathbb{Z}_n^* \). We will show that \( g^1,\dots, g^{\phi(n)-1}\) are incongruent modulo n. If otherwise, \(\exists\) \(k \in \mathbb{Z}_n^*\) that is incongruent to all of \(g^1,\dots, g^{\phi(n)-1}\). Since g is a generator \(\exists\) \( r\) such that \(g^r \equiv k \pmod{n}\).<br>\(r = q\phi(n)+m\) where \(m \in \{1,\dots, {\phi(n)-1}\}\)<br>By <strong>Euler's Theorem</strong> we have that \(g^{\phi(n)} \equiv 1 \pmod{n}\). So \(g^{m} \equiv k \pmod{n}\) where \(m \in \{1,\dots, {\phi(n)-1}\}\).<br>This is a contradiction to the fact that \(k\) is incongruent to all of \(g^1,\dots, g^{\phi(n)-1}\). Hence all of \( g^1,\dots, g^{\phi(n)-1}\) are incongruent to each other. So \(\phi(n)\) is the smallest number \(a\) such that \(g^a \equiv 1 \pmod{n}\). Thus order of g is \(\phi(n)\).</p>
 
     <h2 id="quadratic-residue">Quadratic Residue</h2>
+    <p>Let \( a \in \mathbb{Z}_n \). We say \( a \) is a quadratic residue if there exists some \( x \) such that \( x^2 \equiv a \pmod{n} \). Otherwise \( a \) is a quadratic nonresidue.</p>
+    <p><strong>Theorem: </strong>Let \(p\) be an odd prime and \(\gcd(a,p) = 1\). Then:</p>
+    <ul>
+        <li>\(a^{\frac{p-1}{2}} \equiv 1 \pmod{p}\) iff \(a\) is a quadratic residue modulo n.</li>
+        <li>\(a^{\frac{p-1}{2}} \equiv -1 \pmod{p}\) iff \(a\) is a quadratic nonresidue modulo n.</li>
+    </ul>
+    <p><strong>Proof:</strong></p>
+
     <h2 id="legendre-symbol">Legendre Symbol</h2>
+    <p>We define the Legendre symbol for odd primes \( p \) and integers \( a \) as :</p>
+    <ul>
+        <li>\( \left( \frac{a}{p} \right) = 1 \) if \( a \) is a quadratic residue of \( p \)</li>
+        <li>\( \left( \frac{a}{p} \right) = -1 \) if \( a \) is a quadratic nonresidue of \( p \)</li>
+        <li>\( \left( \frac{a}{p} \right) = 0 \) if \( a \equiv 0 \pmod{p} \)</li>
+    </ul>
+
+    <p>Thus, we have 
+        \[
+        \left( \frac{a}{p} \right) \equiv a^{(p-1)/2} \pmod{p}
+        \]</p>
+    <p>Some properties of the Legendre Symbol: </p>
+    <ul>
+        <li>If \(a \equiv b \pmod{p}\), then \(\left( \frac{a}{p} \right) = \left( \frac{b}{p} \right)\)</li>
+        <li>\(\left( \frac{a^2}{p} \right) = 1\)</li>
+        <li>\(\left( \frac{ab}{p} \right) = \left( \frac{a}{p} \right)\left( \frac{b}{p} \right)\)</li>
+        <li>\(\left( \frac{1}{p} \right) = 1\) and \(\left( \frac{-1}{p} \right) = (-1)^{\frac{p-1}{2}}\)</li>
+    </ul>
     <h2 id="jacobi-symbol">Jacobi Symbol</h2>
     <h2 id="algorithm-analysis">The Algorithm and Its Analysis</h2>
 
