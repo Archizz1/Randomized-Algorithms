@@ -65,17 +65,22 @@
         <li>If \( a \equiv b \pmod{n} \) and \( c \equiv d \pmod{n} \), then \( a + c \equiv b + d \pmod{n} \) and \( ac \equiv bd \pmod{n} \)</li>
         <li>If \( a \equiv b \pmod{n} \), then \( a + c \equiv b + c \pmod{n} \) and \( ac \equiv bc \pmod{n} \)</li>
         <li>If \( a \equiv b \pmod{n} \), then \( a^k \equiv b^k \pmod{n} \) for any positive integer \( k \)</li>
-        <li>If \( ca \equiv cb \pmod{n} \), then \( a \equiv b \pmod{n} \) where \( d = \gcd(c, n) \)</li>
+        <li>If \( ca \equiv cb \pmod{n} \) and \( \gcd(c, n) = 1 \), then \( a \equiv b \pmod{n} \)</li>
     </ul>
-    <p>One can easily verify these properties using basic concepts of divisibility of integers.</p>
+    <p>One can easily verify these using basic concepts of divisibility of integers.</p>
 
     <h2 id="eulers-totient">Euler's Totient Function</h2>
     <p>The Euler's totient function \( \phi(n) \) denotes the cardinality of the set \( \{x \mid 1 \leq x < n, x \in \mathbb{N}, \gcd(x, n) = 1\} \).</p>
-    <p>Since for a prime number \( p \), all numbers from \( 1 \) to \( p-1 \) are co-prime to \( p \). Thus \( \phi(p) = p-1 \). For \( p^k \), where \( p \) is a prime and \( k \) is a positive integer, \( p^k \) is not co-prime to \( 1, p, 2p, \dots, p^{k}-p \), which are \( p^{k-1} \) numbers. Therefore, \( \phi(p^k) = p^k - p^{k-1} \).</p>
+    <p>For \( p^k \), where \( p \) is a prime and \( k \) is a positive integer, \( p^k \) is not co-prime to \( 1, p, 2p, \dots, p^{k-1}p \), which accounts for \( p^{k-1} \) numbers. Thus, \( \phi(p^k) = p^k - p^{k-1} \).</p>
     <p><strong>Euler's Theorem:</strong> If \( \gcd(a, n) = 1 \), then \( a^{\phi(n)} \equiv 1 \pmod{n} \).</p>
 
     <h2 id="groups">Groups</h2>
+    <p>A group is a set equipped with an operation that satisfies four properties: closure, associativity, the existence of an identity element, and the existence of inverses.</p>
+
     <h2 id="generators">Generators</h2>
+    <p>A unit \( g \in \mathbb{Z}_n^* \) is called a generator or primitive root of \( \mathbb{Z}_n^* \) if for every \( a \in \mathbb{Z}_n^* \), we have \( g^k = a \) for some integer \( k \). In other words, if we start with \( g \) and keep multiplying by \( g \), eventually we see every element.<br> The order of a unit \( a \in \mathbb{Z}_n^* \) is defined as the smallest integer \(k\) for which \( a^k \equiv 1 \pmod{n} \).
+    <p><strong>Theorem:</strong> The order of a generator \( g \in \mathbb{Z}_n^* \) modulo n is  \(\phi(n)\).<br><strong>Proof:</strong>There are \(\phi(n)\) elements in \(\mathbb{Z}_n^* \). We will show that \( g^1,\dots, g^{\phi(n)-1}\) are incongruent modulo n. If otherwise, \(\exists\) \(k \in \mathbb{Z}_n^*\) that is incongruent to all of \(g^1,\dots, g^{\phi(n)-1}\). Since g is a generator \(\exists\) \( r\) such that \(g^r \equiv k \pmod{n}\).<br>\(r = q\phi(n)+m\) where \(m \in \{1,\dots, {\phi(n)-1}\}\)<br>By <strong>Euler's Theorem</strong> we have that \(g^{\phi(n)} \equiv 1 \pmod{n}\). So \(g^{m} \equiv k \pmod{n}\) where \(m \in \{1,\dots, {\phi(n)-1}\}\).<br>This is a contradiction to the fact that \(k\) is incongruent to all of \(g^1,\dots, g^{\phi(n)-1}\). Hence all of \( g^1,\dots, g^{\phi(n)-1}\) are incongruent to each other. So \(\phi(n)\) is the smallest number \(a\) such that \(g^a \equiv 1 \pmod{n}\). Thus order of g is \(\phi(n)\).</p>
+
     <h2 id="quadratic-residue">Quadratic Residue</h2>
     <h2 id="legendre-symbol">Legendre Symbol</h2>
     <h2 id="jacobi-symbol">Jacobi Symbol</h2>
